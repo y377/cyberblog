@@ -1,17 +1,17 @@
 - name: 合集
-  url: /home
+  url: /home/
 
 - name: 说说
-  url: /blog
+  url: /blog/
 
 - name: video
-  url: /video
+  url: /video/
 
 - name: 关于
-  url: /about
+  url: /about/
 
 - name: 音乐
-  url: /music
+  url: /music/
 
 - name: 占位符
   url: 
