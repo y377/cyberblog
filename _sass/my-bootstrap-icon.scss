@@ -1,0 +1,127 @@
+/*!
+ * Bootstrap Icons v1.11.3 (https://icons.getbootstrap.com/)
+ * Copyright 2019-2024 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/icons/blob/main/LICENSE)
+ */
+
+$bootstrap-icons-font: "bootstrap-icons" !default;
+$bootstrap-icons-font-dir: "../fonts" !default;
+$bootstrap-icons-font-file: "#{$bootstrap-icons-font-dir}/#{$bootstrap-icons-font}" !default;
+$bootstrap-icons-font-hash: "Y377et8muOdmuA8kUgM2x3Y" !default;
+$bootstrap-icons-font-src: url("#{$bootstrap-icons-font-file}.woff2?#{$bootstrap-icons-font-hash}") format("woff2"),
+url("#{$bootstrap-icons-font-file}.woff?#{$bootstrap-icons-font-hash}") format("woff") !default;
+
+@font-face {
+    font-display: block;
+    font-family: $bootstrap-icons-font;
+    src: $bootstrap-icons-font-src;
+}
+
+.bi::before,
+[class^="bi-"]::before,
+[class*=" bi-"]::before {
+    display: inline-block;
+    font-family: $bootstrap-icons-font !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: -.125em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$bootstrap-icons-map: ("arrow-90deg-left": "\f10f",
+"arrow-down-right": "\f123",
+"arrow-left-square-fill": "\f12d",
+"arrow-return-left": "\f131",
+"arrow-right": "\f138",
+"arrow-up-right": "\f144",
+"arrow-up-left": "\f13f",
+"arrow-up-square-fill": "\f146",
+"arrow-up-square": "\f147",
+"badge-ad": "\f161",
+"card-list": "\f227",
+"caret-left-square": "\f22f",
+"caret-right-square": "\f233",
+"check2": "\f272",
+"chevron-left": "\f284",
+"chevron-right": "\f285",
+"clipboard-check": "\f28b",
+"clipboard": "\f290",
+"code-slash": "\f2c6",
+"code": "\f2c8",
+"collection": "\f2cc",
+"dash": "\f2ea",
+"dot": "\f309",
+"envelope-fill": "\f32c",
+"envelope": "\f32f",
+"exclamation-diamond-fill": "\f334",
+"exclamation-triangle": "\f33b",
+"flag-fill": "\f3cb",
+"front": "\f3dd",
+"geo-alt-fill": "\f3e7",
+"geo-alt": "\f3e8",
+"github": "\f3ed",
+"grid-3x2": "\f3f7",
+"hourglass-bottom": "\f41e",
+"hourglass-split": "\f41f",
+"hourglass-top": "\f420",
+"hourglass": "\f421",
+"house-door-fill": "\f422",
+"house": "\f425",
+"info-square-fill": "\f432",
+"info-square": "\f433",
+"info": "\f434",
+"list-ul": "\f478",
+"moon-fill": "\f494",
+"moon": "\f497",
+"paragraph": "\f4b4",
+"pencil-square": "\f4ca",
+"person-fill": "\f4da",
+"phone-fill": "\f4e2",
+"phone": "\f4e7",
+"sun-fill": "\f5a1",
+"telephone-fill": "\f5b4",
+"telephone": "\f5c1",
+"three-dots-vertical": "\f5d3",
+"tools": "\f5db",
+"check-lg": "\f633",
+"dash-lg": "\f63b",
+"x-lg": "\f659",
+"quote": "\f6b0",
+"router-fill": "\f6eb",
+"router": "\f6ec",
+"1-circle": "\f797",
+"1-square-fill": "\f798",
+"2-circle": "\f79d",
+"2-square-fill": "\f79e",
+"3-circle": "\f7a3",
+"3-square-fill": "\f7a4",
+"4-circle": "\f7a9",
+"4-square-fill": "\f7aa",
+"5-circle": "\f7af",
+"5-square-fill": "\f7b0",
+"6-circle": "\f7b5",
+"6-square-fill": "\f7b6",
+"7-circle": "\f7bb",
+"7-square-fill": "\f7bc",
+"8-circle": "\f7c1",
+"8-square-fill": "\f7c2",
+"9-circle": "\f7c7",
+"9-square-fill": "\f7c8",
+"box-fill": "\f7d2",
+"c-circle": "\f7db",
+"wechat": "\f829",
+"0-circle": "\f840",
+"0-square-fill": "\f841",
+"tencent-qq": "\f8cb",
+);
+
+@each $icon,
+$codepoint in $bootstrap-icons-map {
+    .bi-#{$icon}::before {
+        content: $codepoint;
+    }
+}

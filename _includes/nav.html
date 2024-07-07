@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg" id="navbar">
+    <div class="container">
+        <a class="navbar-brand navbar-text" href="{{ site.url | relative_url }}"><span>{{ site.title }}</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                {% for nav in site.data.navigation %}
+                {% if nav.name == '合集' %}
+                <li class="nav-item dropdown px-1 lh-lg">
+                    <a class="nav-link dropdown-toggle {% if page.url == '/home/' %}active{% endif%}" href="#" id="collectionsNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ nav.name }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="collectionsNavbarDropdown">
+                        <li><a href="{{ '/home' | relative_url }}" class="dropdown-item {% if page.url == '/home/' %}active{% endif %}" style="--bs-link-hover-color-rgb: 419, 20, 0;">
+                                <i class="bi bi-house-door-fill"></i> {{ site.pages | where: "path", "home.md" | first | map: "title" }}
+                            </a>
+                        </li>
+                        {% for collection in site.collections %}
+                        {% if collection.label != "posts" %}
+                        <li><a class="dropdown-item {% assign sss = collection.label | prepend:'/' | append:'/'%}{% if sss == page.url or page.url contains sss %}active{% endif %}" href="/{{ collection.label | downcase | slugize }}">{{ collection.title }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% else %}
+                <li class="nav-item px-1 lh-lg">
+                    {% assign jia_xiegang = nav.url | append: "/" %}
+                    {% if jia_xiegang == page.url %}
+                    <a href="{{ nav.url }}/" class="nav-link link-primary active" aria-current="page">{{ nav.name }}</a>
+                    {% else %}
+                    <a href="{{ nav.url }}" class="nav-link">{{ nav.name }}</a>
+                    {% endif %}
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <div class="d-flex">
+                <button type="button" class="btn btn-none border-0" data-bs-toggle="theme" id="theme-toggle"><i class="bi bi-moon"></i></button>
+            </div>
+        </div>
+    </div>
+</nav>
+<script src="{{ '/assets/js/theme_color.js' | relative_url }}">
+</script>

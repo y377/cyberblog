@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  {% for tab in site.config['tabs'] %}
+    <li class="nav-item" role="presentation">
+      <button class="nav-link{% if forloop.first %} active{% endif %}"
+              id="{{ tab.title | slugify }}-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#{{ tab.title | slugify }}-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="{{ tab.title | slugify }}-tab-pane"
+              aria-selected="{{ forloop.first | boolean }}"
+      >{{ tab.title }}</button>
+    </li>
+  {% endfor %}
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  {% for tab in site.config['tabs'] %}
+    <div class="tab-pane fade{% if forloop.first %} show active{% endif %}"
+         id="{{ tab.title | slugify }}-tab-pane"
+         role="tabpanel"
+         aria-labelledby="{{ tab.title | slugify }}-tab"
+         tabindex="0"
+    >{{ tab.content | markdownify }}</div>
+  {% endfor %}
+</div>
+
+# Debug Tabs Data:
+<pre>{{ site.config['tabs'] | jsonify }}</pre>

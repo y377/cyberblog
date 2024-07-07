@@ -1,0 +1,37 @@
+// custom.scss
+
+#tabs-demo {
+  .nav-tabs {
+    @extend .nav;
+    @extend .nav-tabs;
+    background-color: var(--bs-secondary);
+    border: 1px solid var(--bs-light);
+  }
+
+  .nav-link {
+    @extend .nav-link;
+  }
+
+  .tab-content {
+    @extend .tab-content;
+  }
+
+  .tab-pane {
+    @extend .tab-pane;
+  }
+
+  ul {
+    &.tabs-demo {
+      list-style: none;
+
+      li {
+        @extend .nav-item;
+        margin-bottom: -1px;
+      }
+
+      a {
+        @extend .nav-link;
+      }
+    }
+  }
+}

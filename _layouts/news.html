@@ -1,0 +1,67 @@
+---
+layout: default
+description: 说说布局
+---
+<style type="text/css">
+p {
+    text-indent: 2.05rem;
+}
+</style>
+<div class="container">
+    <div class="row py-5 px-lg-5 mx-lg-5">
+        <h1 class="font-monospace text-center py-3">{{ page.title }}</h1>
+        <span class="align-middle text-secondary text-lg-end text-center p-1">
+            <i class="bi bi-pencil-square"></i><time datetime="{{ page.date | date: '%F' }}" class="font-monospace mx-1">{{ page.date | date: "%F" }}</time>
+            <i class="bi bi-person-fill"></i><a class="text-decoration-none hvr-underline-from-left font-monospace link-secondary align-top mx-1" href="/author">{{ page.author }}</a>
+        </span>
+        <div class="js-toc-content lh-lg pt-4">
+            {{ content }}
+        </div>
+        {% if page.previous.url %}
+        <section class="d-grid d-md-block border-start border-info border-2 mt-5">
+            <span class="fw-bold">下一篇<i class="bi bi-arrow-down-right"></i></span>
+            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover align-middle" href="{{ page.previous.url }}">{{ page.previous.title | truncate: 26 }}</a>
+        </section>
+        {% endif %}
+    </div>
+    <!--     <div class="row sticky-bottom me-auto ">
+        <div class="d-inline">
+            <div class="d-flex flex-column float-end">
+                <a class="btn btn-none border-0 my-2 hvr-bounce-to-top" href="#navbar" role="button"><i class="bi bi-arrow-up-square-fill fs-2"></i></a>
+            </div>
+        </div>
+    </div> -->
+</div>
+<!-- <div class="me-5 sticky-bottom d-inline-flex float-end">
+    <div class="position-absolute bottom-0 end-0">
+        <a class="btn btn-none border-0 my-2 hvr-bounce-to-top" href="#navbar" role="button"><i class="bi bi-arrow-up-square-fill fs-2"></i></a>
+    </div>
+</div> -->
+<div class="sticky-bottom d-inline-flex float-end">
+    <div class="position-absolute bottom-0 end-0">
+        <div class="d-flex float-end">
+            <a class="btn btn-link hvr-bounce-to-top" href="#navbar" role="button"><i class="bi bi-arrow-up-square fs-2"></i></a>
+        </div>
+    </div>
+</div>
+<script src="{{ '/assets/js/highlight.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/my_highlight_line.js' | relative_url }}"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const imgElements = document.querySelectorAll('img');
+
+    imgElements.forEach(img => {
+        img.classList.add('img-fluid', 'rounded');
+    });
+});
+// 获取包含目录内容的容器
+const tocContent = document.querySelector('.js-toc-content');
+
+// 获取容器内的所有 <h1> 到 <h6> 元素
+const headings = tocContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+// 使用 forEach 遍历标题元素并添加 .lh-lg 类
+headings.forEach(heading => {
+    heading.classList.add('lh-lg', 'font-monospace', 'text-center');
+});
+</script>

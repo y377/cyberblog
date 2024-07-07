@@ -1,0 +1,233 @@
+#blog {
+    background: $light;
+
+    .theme-dark & {
+        background-color: $gray-800;
+    }
+}
+
+.btn-toggleView {
+    color: $indigo-800;
+
+    .theme-dark & {
+        /* blog首页的视图切换按钮 */
+        color: $white;
+    }
+}
+
+
+
+
+html[data-bs-theme="light"] {
+    .oldquote {
+        background-color: lightgray;
+        border-radius: $border-radius;
+
+        &:before {
+            content: "\f6b0";
+            //color: $info;
+            font-family: $bootstrap-icons-font;
+            margin-right: 5rem;
+        }
+
+        ol {
+            margin-top: $spacer;
+            margin-bottom: $spacer;
+
+            li {
+                padding-bottom: $spacer;
+
+                &::marker {
+                    font-family: monospace;
+                }
+            }
+        }
+    }
+
+    footer {
+        background-color: $light !important;
+    }
+}
+
+li {
+    &::marker {
+        color: $purple-800; // 默认编号颜色为黑色
+        font-weight: $font-weight-bold;
+        font-family: monospace;
+
+        .theme-dark & {
+            // 如果html元素有theme-dark类，编号颜色为白色
+            color: $gray-500;
+        }
+    }
+}
+
+
+
+
+
+html[data-bs-theme="dark"] {
+    .oldquote {
+        background-color: $light;
+        border-radius: $border-radius;
+
+        &:before {
+            content: "\f6b0";
+            //color: $info;
+            font-family: $bootstrap-icons-font;
+            margin-right: 5rem;
+        }
+
+        ol {
+            margin-top: $spacer;
+            margin-bottom: $spacer;
+
+            li {
+                padding-bottom: $spacer;
+            }
+        }
+    }
+}
+
+
+
+@mixin y377-style($bg-color) {
+    @extend .alert;
+    background-color: $bg-color;
+
+
+    $adjusted-bg-color: adjust-color($bg-color, $lightness: -10%, $saturation: -10%, $alpha: -0.1);
+
+    .theme-dark & {
+        background-color: $adjusted-bg-color;
+    }
+}
+
+@mixin y377-icon($content, $light-color, $dark-color) {
+    &:before {
+        content: $content;
+        margin-right: 0.5rem;
+        font-size: 1.2rem;
+        //color: $light-color; // 默认颜色
+        display: inline-block;
+        font-family: $bootstrap-icons-font;
+        font-style: normal;
+        font-weight: normal !important;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        vertical-align: -0.125em;
+        -webkit-font-smoothing: antialiased;
+
+        .theme-dark & {
+            color: $dark-color; // 暗黑模式下的颜色
+        }
+    }
+}
+
+.tip1 {
+    @include y377-style($purple-600);
+    @include y377-icon("\F433", $light, $light);
+    color: $purple-100;
+
+    // .theme-dark & {
+    //     background-color: y377-style($light);// 暗黑模式下的颜色
+    // }
+}
+
+.tip2 {
+    @include y377-style($red-600);
+    @include y377-icon("\f659", $light, $light); // 替换为你想要的内容和颜色
+    color: $red-100;
+}
+
+.tip3 {
+    @include y377-style($green-600);
+    @include y377-icon("\f633", $light, $light); // 替换为你想要的内容和颜色
+    color: $green-100;
+}
+
+.tip4 {
+    @include y377-style($yellow-600);
+    @include y377-icon("\f33b", $light, $light); // 替换为你想要的内容和颜色
+    color: $yellow-100;
+}
+
+.quote {
+    padding: 1rem;
+    border-radius: var(--bs-border-radius) !important;
+    border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+
+    &:before {
+        content: "\f6b0";
+        font-family: $bootstrap-icons-font;
+        margin-right: 0.5rem;
+    }
+
+    /* 为.quote类下的所有子元素（排除伪元素）应用样式 */
+    >* {
+        text-indent: 2rem;
+    }
+}
+
+
+
+// @mixin tmd-style($bg-color) {
+//     @extend .alert;
+//     background-color: $bg-color;
+//     color: $dark;
+
+//     .theme-dark & {
+//         background-color: adjust-hue($bg-color, +10deg);
+//         color: $light;
+//     }
+// }
+
+
+// @mixin tmd-style($bg-color) {
+//     @extend .alert;
+
+//     // 调整对比度和亮度
+//     $adjusted-bg-color: scale-color($bg-color, $lightness: 20%, $saturation: -20%);
+//     $adjusted-light-bg-color: scale-color($bg-color, $lightness: 10%, $saturation: -10%);
+
+//     background-color: $adjusted-bg-color;
+//     color: $dark;
+
+//     .theme-dark & {
+//         background-color: $adjusted-light-bg-color;
+//         color: $light;
+//     }
+// }
+
+
+
+
+
+
+
+// // 颜色map
+// $tmd-colors: (
+//   "tmd1": $purple-500,
+//   "tmd2": $red-500,
+//   "tmd3": $green-500,
+//   "tmd4": $orange-500,
+// );
+
+
+// @each $name, $color in $tmd-colors {
+
+//   .#{$name} {
+
+//     padding: 15px;
+//     margin-bottom: 20px;
+//     border: 1px solid transparent;
+//     border-radius: 4px;
+
+//     background-color: $color;
+//     color: #fff;
+//     @extend .alert;
+
+//   }
+
+// }

@@ -1,0 +1,45 @@
+@import "scss/bootstrap";
+@import "my-bootstrap-icon";
+@import "custom/tip";
+@import "code";
+@import "viewer";
+// @import "monokai-sublime";
+// @import "custom/tabs-demo";
+
+
+
+
+
+#blog.shadow {
+    box-shadow: 0 0.5rem 1rem #343a40 !important;
+
+    .theme-dark & {
+        box-shadow: 0 0.5rem 1rem rgb(226 219 234 / 47%) !important;
+    }
+}
+
+// hover scss
+@import "custom/hover/_hacks";
+@import "custom/hover/_mixins";
+@import "custom/hover/_options";
+@import "custom/hover/_underline-from-left";
+@if $includeClasses {
+	.#{$nameSpace}-underline-from-left {
+		@include underline-from-left();
+	}
+};
+
+@import "custom/hover/_bounce-to-top";
+@if $includeClasses {
+	.#{$nameSpace}-bounce-to-top {
+		@include bounce-to-top();
+	}
+}
+
+
+@import "custom/hover/_bubble-bottom";
+@if $includeClasses {
+	.#{$nameSpace}-bubble-bottom {
+		@include bubble-bottom();
+	}
+}

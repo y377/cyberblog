@@ -1,0 +1,202 @@
+---
+layout: default
+---
+<style type="text/css">
+pre {
+    position: relative;
+}
+
+code>button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.5;
+    /*display: inline-block*/
+}
+
+pre>code {
+    opacity: 1;
+}
+
+
+code>button:hover {
+    opacity: 1;
+}
+
+.js-toc-content .anchorjs-link {
+    opacity: 0.5;
+    color: #adb5bd;
+}
+
+.js-toc-content .anchorjs-link:hover {
+    opacity: 1;
+    color: orangered;
+}
+
+div.js-toc-content>h1,
+div.js-toc-content>h2,
+div.js-toc-content>h3,
+div.js-toc-content>h4,
+div.js-toc-content>h5,
+div.js-toc-content>h6 {
+    padding: 1.5rem 0 !important;
+}
+
+/*blockquote {
+    border-left: 2px solid #607d8b;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+*/
+
+
+/* Enable smooth scrolling */
+@media screen and (prefers-reduced-motion: no-preference) {
+    body {
+        scroll-behavior: smooth;
+    }
+}
+
+.top-link {
+    transition: all .25s ease-in-out;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2em 2em 0;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+}
+
+/*  仅帖子标题使用 */
+#backtop {
+    display: grid;
+    grid-auto-rows: 1fr auto;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: auto;
+}
+
+div {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.myCanvas {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, #3f51b5, #f44336, #3949ab, #01579b);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    justify-self: center;
+    justify-content: end;
+    align-self: center;
+}
+
+#Switching {
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+section:last-child {
+    align-self: center;
+    justify-self: end;
+}
+</style>
+<div class="container">
+    <div class="m-0 py-4 px-3" id="backtop">
+        <h1 class="myCanvas font-monospace">{{ page.title }}</h1>
+        <span class="align-middle text-secondary" style="align-self: center;justify-self: end;">
+            <i class="bi bi-pencil-square"></i>
+            <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%Y.%m.%d" }}</time>
+            <i class="bi bi-person-fill"></i><a class="text-decoration-none hvr-underline-from-left font-monospace link-secondary align-top" href="/author">{{ page.author }}</a>
+        </span>
+    </div>
+    <div class="js-toc-content m-lg-5 p-lg-5">
+        {{ content }}
+        <div class="row text-end p-3">
+            {% if page.last-modified-date > page.date %}
+            <i class="bi bi-wrench-adjustable text-secondary align-middle">{{ page.last-modified-date | timeago }}</i>
+            {% endif %}
+        </div>
+        {% if page.next.url %}
+        <section class="d-grid d-md-block my-3">
+            <span class="fw-bold">下一篇<i class="bi bi-arrow-down-right"></i></span>
+            <a class="link-offset-3 link-underline text-body text-body mb-3" href="{{ page.next.url }}">{{ page.next.title | truncate: 26 }}</a>
+        </section>
+        {% endif %}
+        {% if page.previous.url %}
+        <section class="d-grid d-md-block text-lg-end my-3">
+            <a class="link-offset-3 link-underline text-body text-body mb-3" href="{{ page.previous.url }}">{{ page.previous.title | truncate: 26 }}</a>
+            <span class="fw-bold d-none d-sm-none d-md-none d-lg-block d-xl-block"><i class="bi bi-arrow-up-left"></i>上一篇</span>
+            <span class="fw-bold d-block d-sm-block d-md-block d-lg-none d-xl-none d-xxl-none">上一篇<i class="bi bi-arrow-up-right"></i></span>
+        </section>
+        {% endif %}
+        <!--  <script>
+            const progressBar = document.querySelector('#read_pro_inner');
+
+        progressBar.style.width = 0 + "%";
+        progressBar.textContent = progressBar.style.width;
+        window.onscroll = function(e) {
+            var height = document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight;
+            progressBar.style.width = (document.scrollingElement.scrollTop / height).toFixed(2) * 100 + "%";
+            progressBar.textContent = progressBar.style.width;
+        }
+        </script> -->
+    </div>
+    <article class="row">
+        <a class="top-link btn btn-outline-primary" href="#backtop" role="button"><i class="bi bi-arrow-up-square fs-5"></i></a>
+    </article>
+    <script src="{{ '/assets/js/anchor_431.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/clipboard.min.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/copy_button.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/highlight.min.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/my_highlight_line.js' | relative_url }}"></script>
+    <script>
+        anchors.options = {
+    visible: "always",
+    ariaLabel: "锚点复制",
+};
+anchors.add('.js-toc-content h1,.js-toc-content h2,.js-toc-content h3,.js-toc-content h4,.js-toc-content h5,.js-toc-content h6');
+
+
+for (var r = 0; r < document.getElementsByClassName("anchorjs-link").length; r++) {
+    var danchors = document.getElementsByClassName("anchorjs-link");
+    var danchorshref = danchors[r].href;
+    danchors[r].setAttribute('data-clipboard-text', decodeURIComponent(danchorshref));
+}
+</script>
+    <script src="{{ '/assets/js/copy_anchor.js' | relative_url }}"></script>
+    <nav class="navbar sticky-top">
+        <div class="offcanvas offcanvas-start mt-3" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-body js-toc">
+                <ul class="list-group list-group-flush">
+                    {% for post in site.posts %}
+                    {% if post.url == page.url %}
+                    <li class="list-group-item active" aria-current="true">
+                        {% else %}
+                    <li class="list-group-item">
+                        {% endif %}
+                        <a href="{{ post.url }}" class="text-decoration-none link-secondary{% if post.url == page.url %} link-light lead{% endif %}">{{ post.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="offcanvas-header text-bg-danger p-0">
+                <button type="button" class="btn btn-outline-success w-100 border-0 rounded-0" data-bs-dismiss="offcanvas" aria-label="关闭"><i class="bi bi-arrow-return-left text-white fw-bold fs-3"></i></button>
+            </div>
+        </div>
+    </nav>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const imgElements = document.querySelectorAll('img');
+
+    imgElements.forEach(img => {
+        img.classList.add('img-fluid', 'rounded');
+    });
+});
+</script>

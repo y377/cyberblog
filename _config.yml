@@ -1,0 +1,170 @@
+url: "https://www.cyberblog.cn"
+baseurl: ""
+title: "Cyberblog"
+description: |
+  CyberBlog（赛博博客） 一个干净而简洁的 Jekyll 主题，专为技术博客和阅读爱好者设计。支持响应式布局，适用于各种设备，包括PC、平板和手机。
+
+version: "1.0"
+license: "MIT License"
+
+timezone: Asia/Shanghai
+encoding: UTF-8
+permalink: pretty
+# highlighter: rouge
+liquid:
+  error_mode: strict
+#  strict_variables: true
+#  strict_filters: true
+sass:
+  style: compressed
+  sourcemap: never
+
+keep_files: [.stfolder]
+ 
+collections_dir: my_collections
+collections:
+  network:
+    output: true
+    permalink: /:collection/:name/
+    title: 网络们
+    description: 深入浅出地探索互联网技术与趋势。从基础原理到前沿技术，为您揭示网络的魅力与奥秘
+  virtualization:
+    output: true
+    permalink: /:collection/:name/
+    title: 虚拟化
+    description: 
+  server:
+    output: true
+    permalink: /:collection/:name/
+    title: 服务器
+    description: 
+  system:
+    output: true
+    permalink: /:collection/:path/:name/
+    title: 系统
+    description: 
+  homelab:
+    output: true
+    permalink: /:collection/:name/
+    title: 家庭实验室
+    description: 
+  tools:
+    output: true
+    permalink: /:collection/:name/
+    title: 工具
+    description: 
+  jekyll:
+    output: true
+    permalink: /:collection/:name/
+    title: jekyll
+    order: 
+      - about-theme.md
+    description: 
+
+defaults:
+  - scope:
+      path: ""
+      type: "homelab"
+    values:
+      label: "家庭实验室"
+      toc: true
+
+  - scope:
+      path: ""  
+      type: "network"
+    values:
+      layout: doc
+      toc: true
+      label: "网络"
+
+  - scope:
+      path: ""
+      type: "jekyll" 
+    values:
+      layout: "doc"
+      label: "主题用法"
+      toc: true
+  - scope:
+      path: ""
+      type: "system" 
+    values:
+      layout: "doc"
+      label: "linux常用操作"
+      toc: true
+  - scope:
+      path: ""
+      type: "tools" 
+    values:
+      layout: "doc"
+      label: "博客人高级玩法"
+      toc: true
+
+record_number: 苏ICP备19074249号-15 #备案号
+record_url: https://beian.miit.gov.cn/#/Integrated/recordQuery
+public_security_number:  #公安网备案号
+public_security_url: https://www.beian.gov.cn/portal/registerSystemInfo
+plugins:
+  - jekyll-toc
+  - jekyll-seo-tag
+  # - bootstraptabs
+#  - jekyll-sitemap
+#  - jekyll-feed
+#  - jekyll-spaceship
+#  - jekyll-timeago
+toc:
+  min_level: 2
+  max_level: 5
+  ordered_list: false
+  no_toc_section_class: no_toc_section
+  list_id: toc
+  list_class: list-group list-group-numbered list-group list-group-flush
+  sublist_class: list-group list-group-numbered list-group-flush #list-group-flush border-start border-danger border-2
+  item_class: list-group-item #py-0 py-sm-0 py-md-0 py-lg-0 py-xl-0 py-xxl-0 lh-lg 
+  item_prefix: toc-
+
+
+
+kramdown:
+#  input: GFM # 输入格式，可以是 GFM（GitHub Flavored Markdown）或 Kramdown
+#  hard_wrap: true # 是否自动插入换行符
+  syntax_highlighter: hljs # 语法高亮器，可以是 rouge（默认）或其他值
+  syntax_highlighter_opts: # 语法高亮器选项，针对 Rouge 的设置
+     disable: true     # true 为禁用 Kramdown 的默认高亮功能
+#  smart_quotes: false
+#    default_lang: python # 默认代码语言
+#    guess_lang: true # 是否尝试猜测代码语言
+#    formatter: Rouge::Formatters::HTMLLegacy # 自定义 Rouge 格式化类
+#    disable: false # 是否禁用语法高亮
+#    span:
+#      line_numbers: true # 是否显示行号
+#      line_number_start: 1 # 行号的起始值
+#    block:
+#      line_numbers: true # 是否显示行号
+#      line_number_start: 1 # 行号的起始值
+#  toc_levels: 1..6 # Markdown 标题的级别，用于自动生成目录
+#  entity_output: as_char # HTML 实体的输出方式，可以是 as_char 或 as_input
+
+# 用户自定义的部分;
+# 如果需要更改显示的icon图标，在./_includes/footer.html处更改
+
+mail: "web@cyberblog.cn"                       #联系Email
+#phone: "010-12345678"                              #固定电话
+#telephone: "13712345678"                           #手机号码
+#localtion_address: "某某省某某市某某大街某某号"      #联系地址
+wechat:                                 #微信号
+tencent-qq:                              #腾讯QQ号
+github: "https://github.com/cyberblog-cn/cyberblog"
+
+
+# jekyll-seo-tag
+webmaster_verifications:
+  google: OHJQk8zDnjtYQ59DuGs7hu5wrGwahgqU1F-oZpCVNdA
+  bing: 15C94307BE37BF12DAAE747A41D2C3DC
+  baidu: codeva-Ju3Sfuenhh
+locale: zh_CN
+
+# Footer advertising or sponsorship
+footer-ad: 
+  name: "法律分基"
+  url: "https://www.wiki.xin"
+

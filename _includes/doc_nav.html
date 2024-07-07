@@ -1,0 +1,23 @@
+<nav class="pt-4" aria-label="breadcrumb" id="doc_nav">
+    <style type="text/css">
+    #doc_nav a:hover {
+        opacity: 1 !important;
+    }
+    </style>
+    <ol class="breadcrumb align-items-center lh-lg">
+        <li class="breadcrumb-item border-bottom">
+            <a href="{{ '/home' | relative_url }}" class="text-decoration-none text-reset opacity-75"><i class="bi bi-house-door-fill"></i>
+                {{ site.pages | where: "path", "home.md" | first | map: "title" }}</a>
+        </li>
+        {% for collection in site.collections %}
+        {% for doc in collection.docs %}
+        {% if doc.url == page.url %}
+        <li class="breadcrumb-item border-bottom">
+            <a href="/{{ collection.label }}" class="text-decoration-none text-reset opacity-75">{{ collection.title }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+        <li class="breadcrumb-item border-bottom active" aria-current="page"><a class="text-decoration-none text-reset opacity-75" href="{{ page.url | remove_first: 'index' }}">{{ page.title | truncate: 13 }}</a></li>
+    </ol>
+</nav>

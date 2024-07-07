@@ -1,0 +1,53 @@
+<footer class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-5 text-center">
+            <div class="d-inline-block">
+                {% if site.footer-ad %}
+                <div class="position-relative p-5"><a href="{{ site.footer-ad.url }}" class="text-decoration-none font-monospace text-body display-4 fw-bold">{{ site.footer-ad.name }}</a>
+                    <span class="position-absolute top-0 end-0"><i class="bi bi-badge-ad text-secondary fs-5"></i></span></div>
+                {% else %}
+                <i class="bi bi-badge-ad"></i>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-5 text-center">
+            <address class="d-block lh-lg">
+                <i class="bi bi-envelope fs-5 align-middle"></i><a href="mailto:{{ site.mail }}" class="text-decoration-none px-1 font-monospace fs-6"><code>{{ site.mail }}</code></a>
+                {% if site.github %}
+                <a href="{{ site.github }}" class="text-reset"><i class="bi bi-github fs-4 align-middle"></i></a>{% endif %}
+                {% if site.phone %}<i class="bi bi-phone fs-5 align-middle"></i><a href="tel:{{ site.phone }}" class="text-decoration-none px-1 font-monospace fs-6"><code>{{ site.phone }}</code></a>{% endif %}
+                {% if site.telephone %} <i class="bi bi-telephone fs-5 align-middle"></i><a href="tel:{{ site.telephone }}" class="text-decoration-none px-1 font-monospace fs-6"><code>{{ site.telephone }}</code></a>{% endif %}
+                {% if site.localtion_address %} <i class="bi bi-geo-alt-fill fs-5 align-middle"></i>
+                <code> {{ site.localtion_address }}</code>{% endif %}
+            </address>
+            <article class="d-block lh-lg">
+                {% if site.wechat %} <i class="bi bi-wechat text-success align-middle"></i><code>{{ site.wechat }}</code>{% endif %}
+                {% if site.tencent-qq %} <div class="vr align-middle mx-1"></div>
+                <i class="bi bi-tencent-qq align-middle"></i><code>{{ site.tencent-qq }}</code>
+                <div class="vr align-middle mx-1"></div>{% endif %}
+            </article>
+            <article class="d-block lh-lg pt-5">
+                <small class="lh-lg">
+                    <i class="bi bi-c-circle"></i><time id="copyright_year" class="px-1 font-monospace"></time>
+                    <a href="{{ site.url }}" class="text-decoration-none font-monospace">{{ site.title }}</a>
+                </small>
+                <div class="vr align-middle mx-1"></div>
+                <small><a href="{{ site.record_url }}" class="text-decoration-none text-reset font-monospace">{{ site.record_number }}</a></small>
+                {% if site.public_security_number %} <div class="vr align-middle mx-1"></div>
+                <small><a href="{{ site.public_security_url }}" class="text-decoration-none text-reset font-monospace">{{ site.public_security_number }}</a></small>{% endif %}
+            </article>
+        </div>
+</footer>
+<!-- <script src="https://ipinfo.io/ip?token=da06cec2aae2e1"></script> -->
+<script type="text/javascript">
+var d2 = document.getElementById('copyright_year');
+var year = new Date().getUTCFullYear();
+d2.setAttribute("datetime", year);
+d2.insertAdjacentHTML('beforeend', year);
+</script>
+<!-- <script>
+  function recordData (data) {
+    console.log(data.ip, data.country)
+  }
+</script>
+<script src="https://ipinfo.io/json?callback=recordData&token=da06cec2aae2e1"></script> -->

@@ -1,0 +1,156 @@
+---
+layout: default
+---
+<style type="text/css">
+.js-toc-content .anchorjs-link {
+    opacity: 0.5;
+    color: #adb5bd;
+}
+
+.js-toc-content .anchorjs-link:hover {
+    opacity: 1;
+    color: orangered;
+}
+
+.js-toc-content h1,
+h2,
+h3,
+h4,
+h5 {
+    text-align: center;
+    color: gold !important;
+    background-color: #795548 !important;
+    padding: 1.5rem;
+}
+
+a {
+    text-decoration:none;
+}
+#markdown-toc {
+    padding: 0;
+    list-style-type: none;
+}
+
+#markdown-toc a {
+    text-decoration: none;
+    color: #141619;
+}
+
+blockquote {
+    border-left: solid 2px #6c757d;
+}
+
+/* Enable smooth scrolling */
+@media screen and (prefers-reduced-motion: no-preference) {
+    body {
+        scroll-behavior: smooth;
+    }
+}
+
+.top-link {
+    transition: all .25s ease-in-out;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2em 2em 0;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+}
+
+[aria-expanded="false"] .bi-caret-right {
+    display: inline;
+}
+
+[aria-expanded="false"] .bi-caret-down {
+    display: none;
+}
+
+[aria-expanded="true"] .bi-caret-right {
+    display: none;
+}
+
+[aria-expanded="true"] .bi-caret-down {
+    display: inline;
+}
+</style>
+<div class="container px-0 px-sm-0 px-md-1 px-lg-2 g-0">
+    <nav class="navbar sticky-top">
+        <!-- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel"> -->
+        <div class="offcanvas offcanvas-start bg-light mt-3" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasScrollingLabel">
+            <!--             <div class="offcanvas-header">
+                <h5 class="offcanvas-title text-center">{{ page.title }}</h5>
+            </div> -->
+            <span class="opacity-50">字数：{{ content | number_of_words: "auto" }}</span>
+            <div class="offcanvas-body js-toc" id="divtoc">
+                {{ content | toc_only }}
+            </div>
+            <div class="offcanvas-header text-bg-dark p-0">
+                <button type="button" class="btn btn-outline-success w-100 border-0 rounded-0" data-bs-dismiss="offcanvas" aria-label="关闭"><i class="bi bi-arrow-return-left text-white fw-bold fs-5"></i></button>
+            </div>
+        </div>
+    </nav>
+    <div class="js-toc-content" id="backtop">
+        <!-- data-bs-spy="scroll" data-bs-target="#divtoc" data-bs-offset="0" data-bs-smooth-scroll="true" tabindex="0" -->
+        {{ content | replace: '<ul>', '<ul class="list-group list-group-flush">' | replace: '<li>', '<li class="list-group-item border-start py-2 border-1 border-light lh-lg" style="background-color: #F9F5E9">' }}
+    </div>
+</div>
+<script src="{{ '/assets/js/anchor_431.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/clipboard.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/copy_button.js' | relative_url }}"></script>
+<script>
+anchors.options = {
+    visible: "always",
+    ariaLabel: "锚点复制",
+};
+anchors.add('h1, h2, h3, h4, h5');
+anchors.add('h4 ul');
+anchors.add('ol');
+
+
+
+for (var r = 0; r < document.getElementsByClassName("anchorjs-link").length; r++) {
+    var danchors = document.getElementsByClassName("anchorjs-link");
+    var danchorshref = danchors[r].href;
+    danchors[r].setAttribute('data-clipboard-text', decodeURIComponent(danchorshref));
+}
+</script>
+<script src="{{ '/assets/js/copy_anchor.js' | relative_url }}"></script>
+<script>
+const progressBar = document.querySelector('#read_pro_inner');
+
+progressBar.style.width = 0 + "%";
+progressBar.textContent = progressBar.style.width;
+window.onscroll = function(e) {
+
+    var height = document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight;
+    progressBar.style.width = (document.scrollingElement.scrollTop / height).toFixed(2) * 100 + "%";
+    progressBar.textContent = progressBar.style.width;
+}
+</script>
+<script type="text/javascript">
+const ul_father = document.querySelector('#divtoc');
+const ul_a = ul_father.querySelectorAll('a');
+for (var jjj = 0; jjj < ul_a.length; jjj++) {
+    //ssul[jjj].getAttribute('href');
+    ul_a[jjj].setAttribute('href', decodeURIComponent(ul_a[jjj].hash));
+    ul_a[jjj].setAttribute('class', 'text-decoration-none')
+}
+</script>
+<script type="text/javascript">
+const quote = document.querySelector('blockquote>ul>li:first-child');
+quote.insertAdjacentHTML('afterbegin', '<i class="bi bi-quote "></i>');
+const blockquote = document.querySelector('blockquote');
+blockquote.insertAdjacentHTML('beforebegin', '<button type="button" class="btn btn-none border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-controls=""><i class="bi bi-caret-right"></i><i class="bi bi-caret-down"></i></button>');
+blockquote.setAttribute('id', 'collapse');
+blockquote.setAttribute('class', 'collapse');
+</script>
+<article class="row">
+    <a class="top-link btn btn-outline-primary" href="#backtop" role="button"><i class="bi bi-arrow-up fs-5"></i></a>
+</article>
+
+

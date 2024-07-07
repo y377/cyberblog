@@ -1,0 +1,239 @@
+---
+layout: default
+---
+<div class="container px-0">
+    <style type="text/css">
+    pre {
+        position: relative;
+    }
+
+    code>button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: 0.5;
+    }
+
+
+
+
+    code>button:hover {
+        opacity: 1;
+    }
+
+    .js-toc-content .anchorjs-link {
+        opacity: 0.5;
+        color: #adb5bd;
+    }
+
+    .js-toc-content .anchorjs-link:hover {
+        opacity: 1;
+        color: orangered;
+    }
+
+    div.js-toc-content>h1,
+    div.js-toc-content>h2,
+    div.js-toc-content>h3,
+    div.js-toc-content>h4,
+    div.js-toc-content>h5,
+    div.js-toc-content>h6 {
+        padding: 1.5rem 0 !important;
+    }
+
+    .js-toc-content a {
+        text-decoration: none;
+    }
+
+    /* Enable smooth scrolling */
+    @media screen and (prefers-reduced-motion: no-preference) {
+        body {
+            scroll-behavior: smooth;
+        }
+    }
+
+
+    .myCanvas {
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(to right, #3f51b5, #f44336, #3949ab, #01579b);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        justify-self: center;
+        justify-content: end;
+        align-self: center;
+    }
+
+    #Switching {
+        display: grid;
+        grid-auto-rows: auto;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    section:last-child {
+        align-self: center;
+        justify-self: end;
+    }
+
+
+
+    #divtoc a:hover {
+        opacity: 1.0;
+        color: red !important;
+    }
+
+    blockquote {
+        padding-top: 1rem;
+        /*        padding-bottom: 1rem;*/
+    }
+    </style>
+    {% include doc_nav.html %}
+    <div class="row py-5 px-lg-5 mx-lg-5">
+        <h1 class="myCanvas font-monospace text-center py-3">{{ page.title }}</h1>
+        <span class="align-middle text-secondary text-lg-end text-center">
+            <i class="bi bi-pencil-square"></i><time datetime="{{ page.date | date: '%F' }}" class="font-monospace mx-1">{{ page.date | date: "%F" }}</time>
+            <i class="bi bi-person-fill"></i><a class="text-decoration-none hvr-underline-from-left font-monospace link-secondary align-top mx-1" href="/author">{{ page.author }}</a>
+        </span>
+        <div class="js-toc-content m-0 lh-lg">
+            {{ content }}
+            <div class="row text-end p-3">
+                {% if page.last-modified-date > page.date %}
+                <i class="bi bi-wrench-adjustable text-secondary align-middle">{{ page.last-modified-date | timeago }}</i>
+                {% endif %}
+            </div>
+        </div>
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">目录</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="js-toc sticky-top" id="divtoc">
+                    {% toc %}
+                </div>
+            </div>
+        </div>
+        {% if page.next.url %}
+        <section class="d-grid d-md-block border-start border-info border-2">
+            <span class="fw-bold">下一篇<i class="bi bi-arrow-down-right"></i></span>
+            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover align-middle" href="{{ page.next.url }}">{{ page.next.title | truncate: 26 }}</a>
+        </section>
+        {% endif %}
+    </div>
+    <!-- <div class="py-5" id="Switching">
+        {% if page.next.url %}
+        <section>
+            <a class="icon-link icon-link-hover" href="{{ page.next.url }}"><i class="bi bi-caret-left-square mb-2"></i><span class="align-middle font-monospace text-secondary">{{ page.next.title | truncate: 15 }}</span></a>
+        </section>
+        {% endif %}
+        {% if page.previous.url %}
+        <section>
+            <a class="icon-link icon-link-hover" href="{{ page.previous.url }}"><span class="align-middle font-monospace text-secondary">{{ page.previous.title | truncate: 15 }}</span><i class="bi bi-caret-right-square mb-2"></i></a>
+        </section>
+        {% endif %}
+    </div> -->
+</div>
+<div class="sticky-bottom d-inline-flex float-end">
+    <div class="position-absolute bottom-0 end-0">
+        <div class="d-flex float-end">
+            <button class="btn btn-link text-decoration-none text-nowrap me-auto hvr-bounce-to-top" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="bi bi-card-list fs-2 d-flex flex-column"></i>目录</button>
+            <a class="btn btn-link hvr-bounce-to-top" href="#navbar" role="button"><i class="bi bi-arrow-up-square fs-2"></i></a>
+        </div>
+    </div>
+</div>
+<script src="{{ '/assets/js/highlight.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/my_highlight_line.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/anchor_431.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/clipboard.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/copy_button.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/viewer.min.js' | relative_url }}"></script>
+<script type="text/javascript">
+anchors.options = {
+    visible: "always",
+    ariaLabel: "锚点复制",
+};
+anchors.add('.js-toc-content h1,.js-toc-content h2,.js-toc-content h3,.js-toc-content h4,.js-toc-content h5,.js-toc-content h6');
+
+const danchors = document.querySelectorAll(".anchorjs-link");
+
+danchors.forEach(anchor => {
+    const danchorshref = decodeURIComponent(anchor.href);
+    anchor.dataset.clipboardText = danchorshref;
+});
+</script>
+<script src="{{ '/assets/js/copy_anchor.js' | relative_url }}"></script>
+<script type="text/javascript">
+window.addEventListener("DOMContentLoaded", () => {
+    const adjustTabHeight = () => {
+        const adjustPaneHeight = (tabGroup) => {
+            let maxHeight = 0;
+            const panes = tabGroup.querySelectorAll('.tab-pane');
+
+            panes.forEach(pane => {
+                pane.style.display = "block";
+                const paneHeight = pane.offsetHeight;
+                maxHeight = Math.max(maxHeight, paneHeight);
+                pane.style.display = "";
+            });
+
+            tabGroup.style.height = `${maxHeight}px`; // 设置容器高度
+        }
+
+        const tabGroups = document.querySelectorAll('.tab-content');
+        tabGroups.forEach(tabGroup => {
+            adjustPaneHeight(tabGroup);
+        });
+    }
+
+    adjustTabHeight();
+
+    // 如果页面内容可能会动态更改，可以使用下面的代码再次调整选项卡高度。
+    window.addEventListener("load", adjustTabHeight);
+});
+</script>
+<!-- <script>
+const progressBar = document.querySelector('#read_pro_inner');
+
+progressBar.style.width = 0 + "%";
+progressBar.textContent = progressBar.style.width;
+window.onscroll = function(e) {
+    var height = document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight;
+    progressBar.style.width = (document.scrollingElement.scrollTop / height).toFixed(2) * 100 + "%";
+    progressBar.textContent = progressBar.style.width;
+}
+</script> -->
+<script src="{{ '/assets/js/my_xgplayer.js' | relative_url }}"></script>
+<script type="text/javascript">
+const ul_father = document.querySelector('#divtoc');
+const ul_a = ul_father.querySelectorAll('a');
+
+ul_a.forEach((link) => {
+    const decodedHash = decodeURIComponent(link.hash);
+    link.href = decodedHash;
+    link.classList.add('text-decoration-none', 'text-reset', 'opacity-75');
+});
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     const viewer = document.querySelectorAll('img');
+
+//     viewer.forEach(img => {
+//         img.classList.add('img-fluid', 'rounded');
+//     });
+// });
+</script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+    const images = document.querySelectorAll('img');
+
+    images.forEach(img => {
+
+        img.classList.add('img-fluid', 'img-thumbnail');
+
+
+        const viewer = new Viewer(img, {
+            // 在这里可以配置 Viewer.js 的选项
+            tooltip() {},
+            toolbar: 2,
+            // 例如，你可以启用内联查看等
+        });
+    });
+});
+</script>
