@@ -1,4 +1,4 @@
-url: "https://www.cyberblog.cn"
+url: ""
 baseurl: ""
 title: "Cyberblog"
 description: |
@@ -19,7 +19,7 @@ sass:
   style: compressed
   sourcemap: never
 
-keep_files: [.stfolder]
+#keep_files: [.stfolder]
  
 collections_dir: my_collections
 collections:
@@ -153,7 +153,7 @@ mail: "web@cyberblog.cn"                       #联系Email
 #localtion_address: "某某省某某市某某大街某某号"      #联系地址
 wechat:                                 #微信号
 tencent-qq:                              #腾讯QQ号
-github: "https://github.com/cyberblog-cn/cyberblog"
+github: "https://github.com/y377/cyberblog"
 
 
 # jekyll-seo-tag
