@@ -1,3 +1,10 @@
+---
+layout: doc
+title: RHCSA阶段笔记
+description: IDC服务器运维掌握知识
+date: 2024-10-12
+---
+
 ## 第一节：Linux系统概念及命令学习
 
 
