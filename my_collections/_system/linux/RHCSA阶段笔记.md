@@ -1,4 +1,7 @@
-
+---
+layout: doc
+title: RHCSA阶段笔记
+---
 
 ## 第七节：基本权限管理
 
