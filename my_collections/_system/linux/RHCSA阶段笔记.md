@@ -3206,24 +3206,29 @@ root@localhost ~]# find /var/log -mtime -30 -type f
 
 - 查找/etc/目录下以.conf结尾的文件（只能在/etc这一层目录去查找）
 
-  > ls /etc/*.conf
-
+```
+ls /etc/*.conf
+```
 - 查找/etc/目录下以.conf结尾的文件（包含所有的子目录）
 
-  > find /etc/ -name "*.conf"
-
+```
+find /etc/ -name "*.conf"
+```
 
 
 百度：多查--多查--多查
 
 查找/var/log/messages 文件，清空文件内容，使用find实现
 
-> find /var/log/ -name messages -type f -exec cp /dev/null {} \;
+```
+find /var/log/ -name messages -type f -exec cp /dev/null {} \;
+```
 
 查找/var/log以.log结尾的文件，清空文件内容，使用find实现
 
->  find /var/log -name *.log -type f -a -mtime +10 -exec cp /dev/null {} \;
-
+```
+find /var/log -name *.log -type f -a -mtime +10 -exec cp /dev/null {} \;
+```
 
 
 
