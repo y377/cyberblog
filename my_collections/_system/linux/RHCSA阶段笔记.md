@@ -1187,7 +1187,7 @@ reboot
 
 CPU比较主流的厂商
 
-- AMD公司、Interl公司
+- AMD公司、Intel公司
 - CPU架构
 
   - 8086架构，80286，80386，x86称号
@@ -1289,8 +1289,22 @@ https://www.kernel.org/
 　　L1i cache: 			#一级缓存（具体为L1指令缓存） 
 　　L2 cache: 			#二级缓存
 ```
+- `lspci` 是一个用于列出 PCI（Peripheral Component Interconnect）设备的命令行工具。它可以显示系统中所有连接到 PCI 总线的设备的信息，如图形卡、网络适配器、声卡等。
 
+- 基本命令
+```
+lspci
+```
 
+- 详细信息
+
+```
+lspci -v                  #如果你想查看更详细的信息，可以使用 -v（verbose）选项
+
+lspci -vv                 #也可以增加更多的 v 来获取更详细的输出
+
+lspci | grep -i network   #可以结合 grep 来查找特定的设备。例如，查找所有网络适配器
+```
 
 #### 4. 查看系统内存信息
 
